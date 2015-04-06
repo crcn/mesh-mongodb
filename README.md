@@ -8,6 +8,8 @@ Streamable [Mongodb](https://www.mongodb.org/) library. Works well with [crudlet
 npm install crudlet-mongodb
 ```
 
+Basic Example:
+
 ```javascript
 var crudlet = require("crudlet");
 var mongodb = require("crudlet-mongodb");
@@ -27,7 +29,7 @@ end(crudlet.op("remove", { query: { name: "abba"}}));
 // load the entire collection
 var stream = db(crudlet.op("load", { multi: true }));
 
-stream.on("data", function() {
+stream.on("data", function(data) {
   // handle cursor data
 });
 
@@ -39,6 +41,7 @@ stream.on("end", function() {
 stream.pause();
 
 ```
+
 
 #### db mongodb(host)
 
