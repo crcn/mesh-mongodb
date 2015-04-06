@@ -3,14 +3,12 @@ var istanbul   = require("gulp-istanbul");
 var mocha      = require("gulp-mocha");
 var plumber    = require("gulp-plumber");
 var jshint     = require("gulp-jshint");
-var browserify = require("browserify");
 var uglify     = require("gulp-uglify");
 var source     = require("vinyl-source-stream");
 var buffer     = require("vinyl-buffer");
 var jscs       = require("gulp-jscs");
 var coveralls  = require("gulp-coveralls");
 var rename     = require("gulp-rename");
-var bsync      = require("browser-sync");
 var karma      = require("karma").server;
 var options    = require("yargs").argv;
 
@@ -61,17 +59,6 @@ gulp.task("test-coveralls", ["test-coverage"], function () {
   return gulp.
   src("coverage/**/lcov.info").
   pipe(coveralls());
-});
-
-/**
- */
-
-gulp.task("bundle", function() {
-  return browserify("./lib/index.js").
-  bundle().
-  pipe(source(pkg.name + '.js')).
-  pipe(buffer()).
-  pipe(gulp.dest('./dist'));
 });
 
 /**
@@ -172,16 +159,6 @@ gulp.task("default", function () {
 
 gulp.task("examples", function (next) {
   require("./examples/_app");
-});
-
-/**
- */
-
-gulp.task("browser-sync", function (next) {
-  bsync({
-    proxy: "http://0.0.0.0:8080",
-    files: __dirname + "/examples/**/*"
-    });
 });
 
 /**
