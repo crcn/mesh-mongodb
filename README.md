@@ -51,27 +51,74 @@ creates a local crudelt database
   - `name` - name of db (optional)
   - `store` - store to use
 
-runs an operation
+#### stream db(operationName, options)
 
-- `operation` - operation to run can be: `insert`, `remove`, `update`, or `load`
-- `options` - operation specific options
+Runs a new operation.
 
-insert options:
+> Note that `options.collection` *must* be present when performing operations. The easiest & probably best way to do this is to create a `child` crudlet db.
 
-- `data` - data to insert. Can be an object, or an array to insert multiple
+```javascript
+// remove all people where ages are greater than zero
+db("remove", {
+  collection: "people",
+  query: {
+    age: { $gt: 0 }
+  }
+}).on("data", function() {
 
-remove options:
+});
+```
 
-- `query` - mongodb search query
-- `multi` - TRUE if you want to remove multiple items (false by default)
+#### insert
 
-update options:
+Insert operation.
 
-- `query` - mongodb search query
-- `multi` - TRUE if you want to update multiple items (false by default)
-- `data` - data to set - this is merged with existing data
+```javascript
+var peopleDb = crud.child(db, { collection: "people" });
 
-load options:
+// insert multiple
+peopleDb("insert", { data: [{ name: "john"}, { name: "matt" }]}).on("data", function() {
+  // this is called twice.
+});
+```
 
-- `query` - mongodb search query
-- `multi` - TRUE if you want to load multiple items (one by default)
+#### update
+
+Update operation.
+
+```javascript
+peopleDb("update", {
+  query: { /* mongodb query here */ },
+  data: { /* data to update*/ },
+  multi: true // TRUE if you want to update multiple items
+}).on("data", function() {
+  // emits updated documents
+});
+```
+
+#### remove
+
+Removes a document
+
+```javascript
+peopleDb("remove", {
+  query: { /* mongodb query here */ },
+  data: { /* data to update*/ },
+  multi: true, // TRUE if you want to remove multiple items
+}).on("end", function() {
+
+});
+```
+
+#### load
+
+Removes a document
+
+```javascript
+peopleDb("load", {
+  query: { /* mongodb query here */ },
+  multi: true, // TRUE if you want to load multiple items
+}).on("data", function() {
+
+});
+```
