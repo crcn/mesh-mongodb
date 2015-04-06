@@ -1,34 +1,34 @@
-[![Build Status](https://travis-ci.org/mojo-js/crudlet-mongodb.svg)](https://travis-ci.org/mojo-js/crudlet-mongodb) [![Coverage Status](https://coveralls.io/repos/mojo-js/crudlet-mongodb/badge.svg?branch=master)](https://coveralls.io/r/mojo-js/crudlet-mongodb?branch=master) [![Dependency Status](https://david-dm.org/mojo-js/crudlet-mongodb.svg)](https://david-dm.org/mojo-js/crudlet-mongodb)
+[![Build Status](https://travis-ci.org/mojo-js/mesh-mongodb.svg)](https://travis-ci.org/mojo-js/mesh-mongodb) [![Coverage Status](https://coveralls.io/repos/mojo-js/mesh-mongodb/badge.svg?branch=master)](https://coveralls.io/r/mojo-js/mesh-mongodb?branch=master) [![Dependency Status](https://david-dm.org/mojo-js/mesh-mongodb.svg)](https://david-dm.org/mojo-js/mesh-mongodb)
 
 
-Crudlet-mongodb is a streamable interface for the [Mongodb](https://www.mongodb.org/) library. Works well with [crudlet](https://github.com/mojo-js/crudlet.js), along with other libraries such as [crudlet-socket.io](https://github.com/mojo-js/crudlet-socket.io).
+mesh-mongodb is a streamable interface for the [Mongodb](https://www.mongodb.org/) library. Works well with [mesh](https://github.com/mojo-js/mesh.js), along with other libraries such as [mesh-socket.io](https://github.com/mojo-js/mesh-socket.io).
 
 #### installation
 
 ```
-npm install crudlet-mongodb
+npm install mesh-mongodb
 ```
 
 Basic Example:
 
 ```javascript
-var crudlet = require("crudlet");
-var mongodb = require("crudlet-mongodb");
+var mesh = require("mesh");
+var mongodb = require("mesh-mongodb");
 
-var db = mongodb("mongodb://localhost:27017/crudlet-test");
-db(crudlet.op("insert", { data: { name: "blarg"}})).on("data", function() {
+var db = mongodb("mongodb://localhost:27017/mesh-test");
+db(mesh.op("insert", { data: { name: "blarg"}})).on("data", function() {
 
 });
 
 // streaming operations
-crudlet.
+mesh.
 open(db).
-write(crudlet.op("insert", { data: { name: "abba"}})).
-end(crudlet.op("remove", { query: { name: "abba"}}));
+write(mesh.op("insert", { data: { name: "abba"}})).
+end(mesh.op("remove", { query: { name: "abba"}}));
 
 
 // load the entire collection
-var stream = db(crudlet.op("load", { multi: true }));
+var stream = db(mesh.op("load", { multi: true }));
 
 stream.on("data", function(data) {
   // handle cursor data
@@ -46,7 +46,7 @@ stream.pause();
 
 #### db mongodb(host)
 
-creates a local crudelt database
+creates a local meshelt database
 
 - `options` - options for the local db
   - `name` - name of db (optional)
@@ -56,7 +56,7 @@ creates a local crudelt database
 
 Runs a new operation.
 
-> Note that `options.collection` *must* be present when performing operations. The easiest & probably best way to do this is to create a `child` crudlet db.
+> Note that `options.collection` *must* be present when performing operations. The easiest & probably best way to do this is to create a `child` mesh db.
 
 ```javascript
 // remove all people where ages are greater than zero
@@ -75,7 +75,7 @@ db("remove", {
 Insert operation.
 
 ```javascript
-var peopleDb = crud.child(db, { collection: "people" });
+var peopleDb = mesh.child(db, { collection: "people" });
 
 // insert multiple
 peopleDb("insert", { data: [{ name: "john"}, { name: "matt" }]}).on("data", function() {
