@@ -1,6 +1,6 @@
 {
   "name": "crudlet-mongodb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "reactive data store library",
   "main": "./lib/index.js",
   "scripts": {
