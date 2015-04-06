@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mojo-js/crudlet-mongodb.svg)](https://travis-ci.org/mojo-js/crudlet-mongodb) [![Coverage Status](https://coveralls.io/repos/mojo-js/crudlet-mongodb/badge.svg?branch=master)](https://coveralls.io/r/mojo-js/crudlet-mongodb?branch=master) [![Dependency Status](https://david-dm.org/mojo-js/crudlet-mongodb.svg)](https://david-dm.org/mojo-js/crudlet-mongodb)
 
-Streamable [Mongodb](https://www.mongodb.org/) library. Works well with [crudlet](https://github.com/mojo-js/crudlet.js).
+Streamable interface for [Mongodb](https://www.mongodb.org/).  Works well with [crudlet](https://github.com/mojo-js/crudlet.js).
 
 #### installation
 
