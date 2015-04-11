@@ -2,8 +2,14 @@ var mesh    = require("mesh");
 var mongodb = require("../");
 var _       = require("highland");
 var expect  = require("expect.js");
+var createTestCases = require("mesh-store-test-cases");
 
 describe(__filename + "#", function() {
+
+
+
+  // var cases = createTestCases(memoryDatabase);
+  // for (var name in cases) it(name, cases[name]);
 
   var db;
 

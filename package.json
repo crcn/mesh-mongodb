@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/mojo-js/mesh.js",
   "devDependencies": {
-    "mesh": "^1.0.1",
     "expect.js": "^0.3.1",
     "express": "^4.12.3",
     "glob": "^5.0.3",
@@ -36,6 +35,8 @@
     "highland": "^2.4.0",
     "karma": "^0.12.31",
     "less": "^2.4.0",
+    "mesh": "^1.0.1",
+    "mesh-store-test-cases": "0.0.3",
     "paperclip": "^1.4.10",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
