@@ -1,8 +1,9 @@
 {
   "name": "mesh-mongodb",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "reactive data store library",
   "main": "./lib/index.js",
+  "keywords": ["meshjs"],
   "scripts": {
     "test": "gulp lint test-coveralls",
     "start": "node ./examples/_app"
