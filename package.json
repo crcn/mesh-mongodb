@@ -1,6 +1,6 @@
 {
   "name": "mesh-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "reactive data store library",
   "main": "./lib/index.js",
   "keywords": ["meshjs"],

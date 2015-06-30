@@ -2,7 +2,7 @@ var mesh    = require("mesh");
 var mongodb = require("../");
 var _       = require("highland");
 var expect  = require("expect.js");
-var createTestCases = require("mesh/test-cases/database");
+var createTestCases = require("mesh/test/cases/database");
 
 describe(__filename + "#", function() {
 
